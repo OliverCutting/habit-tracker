@@ -7,3 +7,7 @@ help:
 .PHONY: flask
 flask: ## Deploy flask site to localhost
 	@flask --app main run
+
+.PHONY: setup
+setup: ## Install python dependencies
+	@pip install -r requirements.txt
