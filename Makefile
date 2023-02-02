@@ -12,3 +12,7 @@ flask: ## Deploy flask site to localhost
 setup: ## Install python dependencies and activate pipenv
 	@pipenv install
 	@pipenv shell
+
+.PHONY: clean
+clean: ## Remove temporary files
+	@rm -rf __pycache__
