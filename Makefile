@@ -9,8 +9,9 @@ flask: ## Deploy flask site to localhost
 	@flask --app app run
 
 .PHONY: setup
-setup: ## Install python dependencies
+setup: ## Install python dependencies and activate pipenv
 	@pipenv install
+	@pipenv shell
 
 .PHONY: clean
 clean: ## Remove temporary files
