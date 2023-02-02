@@ -1,7 +1,7 @@
+# Habit-Tracker
 ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/OliverCutting/habit-tracker/flask)
 ![GitHub contributors](https://img.shields.io/github/contributors/OliverCutting/habit-tracker)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/OliverCutting/habit-tracker)
-# Habit-Tracker
 
 A webapp used to help track and create habits.
 
