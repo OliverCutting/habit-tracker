@@ -10,4 +10,4 @@ flask: ## Deploy flask site to localhost
 
 .PHONY: setup
 setup: ## Install python dependencies
-	@pip install -r requirements.txt
+	@pipenv install
