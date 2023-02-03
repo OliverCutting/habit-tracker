@@ -6,7 +6,7 @@ help:
 
 .PHONY: flask
 flask: ## Deploy flask site to localhost
-	@flask --app app run
+	@flask --app app --debug run
 
 .PHONY: setup
 setup: ## Install python dependencies and activate pipenv
