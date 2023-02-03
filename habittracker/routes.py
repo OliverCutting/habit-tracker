@@ -1,23 +1,7 @@
-import config
-from flask import Flask, flash, redirect, render_template, url_for
-from flask_sqlalchemy import SQLAlchemy
-from forms import HabitInputForm
-
-app = Flask(__name__)
-app.config["SECRET_KEY"] = config.SECRET_KEY
-app.config["SQLALCHEMY_DATABASE_URI"] = config.SQLALCHEMY_DATABASE_URI
-db = SQLAlchemy(app)
-app.app_context().push()
-
-
-class Habit(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    habit_name = db.Column(db.String(30), unique=True, nullable=False)
-    habit_desc = db.Column(db.String())
-
-    def __repr__(self):
-        return f"Habit('{self.habit_name}', '{self.habit_desc}')"
-
+from habittracker import app
+from habittracker.forms import HabitInputForm
+from habittracker.models import Habit
+from flask import flash, redirect, render_template, url_for
 
 habits = [
     {"name": "Drink Water", "desc": "2l a day"},
@@ -49,7 +33,3 @@ def create_habit():
         return redirect(url_for("dashboard"))
 
     return render_template("create_habit.html", title="Creat Habit", form=form)
-
-
-if __name__ == "__main__":
-    app.run()

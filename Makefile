@@ -6,7 +6,7 @@ help:
 
 .PHONY: flask
 flask: ## Deploy flask site to localhost
-	@flask --app app --debug run
+	@flask --app habittracker --debug run
 
 .PHONY: setup
 setup: ## Install python dependencies and activate pipenv
@@ -15,4 +15,5 @@ setup: ## Install python dependencies and activate pipenv
 
 .PHONY: clean
 clean: ## Remove temporary files
-	@rm -rf __pycache__
+	@rm -rf __pycache__ instance
+
