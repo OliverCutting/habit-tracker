@@ -16,4 +16,3 @@ setup: ## Install python dependencies and activate pipenv
 .PHONY: clean
 clean: ## Remove temporary files
 	@rm -rf __pycache__ instance
-
