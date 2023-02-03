@@ -11,4 +11,4 @@ A webapp used to help track and create habits.
 2. Run `make setup` to install dependencies
 3. Run `make flask` to test site on localhost
 
-All development must be made on a new branch and have a pull request submitted on completion.
+All development must be made on a new branch, pass super-linter workflow and have a pull request submitted on completion.
