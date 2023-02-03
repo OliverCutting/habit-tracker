@@ -1,5 +1,5 @@
-from flask import Flask, render_template, flash, url_for, redirect
 import config
+from flask import Flask, flash, redirect, render_template, url_for
 from forms import HabitInputForm
 
 app = Flask(__name__)
