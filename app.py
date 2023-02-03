@@ -1,6 +1,9 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, flash, url_for, redirect
+import config
+from forms import HabitInputForm
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = config.SECRET_KEY
 
 habits = [
     {"name": "Drink Water", "desc": "2l a day"},
@@ -14,9 +17,24 @@ def hello_world():
 
 
 @app.route("/")
+def home():
+    return redirect(url_for("dashboard"))
+
+
 @app.route("/dashboard")
 def dashboard():
     return render_template("dashboard.html", habits=habits, title="My Dashboard")
+
+
+@app.route("/createhabit", methods=["GET", "POST"])
+def create_habit():
+    form = HabitInputForm()
+    if form.validate_on_submit():
+        flash("Habit Created!", "success")
+        habits.append({"name": form.habit_name.data, "desc": form.habit_desc.data})
+        return redirect(url_for("dashboard"))
+
+    return render_template("create_habit.html", title="Creat Habit", form=form)
 
 
 if __name__ == "__main__":
