@@ -3,7 +3,7 @@
 ![GitHub contributors](https://img.shields.io/github/contributors/OliverCutting/habit-tracker)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/w/OliverCutting/habit-tracker)
 
-A webapp used to help track and create habits.
+A python based webapp used to help create and track habits.
 
 ## For Developers
 
