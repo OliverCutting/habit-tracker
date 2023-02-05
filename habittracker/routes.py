@@ -31,3 +31,9 @@ def create_habit():
         return redirect(url_for("dashboard"))
 
     return render_template("create_habit.html", title="Create Habit", form=form)
+
+
+@app.route("/habit/<int:habit_id>", methods=["GET", "POST"])
+def habit(habit_id):
+    habit = Habit.query.get_or_404(habit_id)
+    return render_template("habit.html", title=habit.name, habit=habit)
