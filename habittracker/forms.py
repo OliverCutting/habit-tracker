@@ -4,8 +4,8 @@ from wtforms.validators import DataRequired, Length
 
 
 class HabitInputForm(FlaskForm):
-    habit_name = StringField(
+    name = StringField(
         "Habit Name", validators=[DataRequired(), Length(min=2, max=30)]
     )
-    habit_desc = StringField("Habit Description")
+    desc = StringField("Habit Description")
     submit = SubmitField("Create Habit")

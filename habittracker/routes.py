@@ -1,12 +1,7 @@
-from habittracker import app
+from habittracker import app, db
 from habittracker.forms import HabitInputForm
 from habittracker.models import Habit
 from flask import flash, redirect, render_template, url_for
-
-habits = [
-    {"name": "Drink Water", "desc": "2l a day"},
-    {"name": "Workout", "desc": "Lift weights"},
-]
 
 
 @app.route("/test")
@@ -21,15 +16,18 @@ def home():
 
 @app.route("/dashboard")
 def dashboard():
+    habits = Habit.query.all()
     return render_template("dashboard.html", habits=habits, title="My Dashboard")
 
 
-@app.route("/createhabit", methods=["GET", "POST"])
+@app.route("/habit/new", methods=["GET", "POST"])
 def create_habit():
     form = HabitInputForm()
     if form.validate_on_submit():
+        habit = Habit(name=form.name.data, desc=form.desc.data)
+        db.session.add(habit)
+        db.session.commit()
         flash("Habit Created!", "success")
-        habits.append({"name": form.habit_name.data, "desc": form.habit_desc.data})
         return redirect(url_for("dashboard"))
 
-    return render_template("create_habit.html", title="Creat Habit", form=form)
+    return render_template("create_habit.html", title="Create Habit", form=form)
