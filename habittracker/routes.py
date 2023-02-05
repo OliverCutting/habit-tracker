@@ -65,4 +65,4 @@ def delete_habit(habit_id):
     db.session.delete(habit)
     db.session.commit()
     flash("Habit Deleted!", "success")
-    return redirect(url_for('dashboard'))
+    return redirect(url_for("dashboard"))
