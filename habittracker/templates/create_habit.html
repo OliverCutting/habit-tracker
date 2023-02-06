@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 {% extends "layout.html" %}
 {% block content %}
-  <h1>Create Habit</h1>
+  <legend class="border-bottom mb-4">{{ legend }}</legend>
   <form method="POST" action="">
     {{ form.hidden_tag() }}
     <fieldset class="form-group">
       <dir class="form-group">
-        {{ form.habit_name.label(class="form-control-label") }}
-        {{ form.habit_name(class="form-control form-control-lg") }}
+        {{ form.name.label(class="form-control-label") }}
+        {{ form.name(class="form-control form-control-lg") }}
       </dir>
       <dir class="form-group">
-        {{ form.habit_desc.label(class="form-control-label") }}
-        {{ form.habit_desc(class="form-control form-control-lg") }}
+        {{ form.desc.label(class="form-control-label") }}
+        {{ form.desc(class="form-control form-control-lg") }}
       </dir>
     </fieldset>
     <div class="form-group">

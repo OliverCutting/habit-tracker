@@ -4,7 +4,7 @@
   <h1>My Habits</h1>
   {% for habit in habits %}
     <ul>
-      <li><b>{{ habit.name }}</b></li>
+      <li><b><a href="{{ url_for('habit', habit_id=habit.id) }}">{{ habit.name }}</a></b></li>
       <p>{{ habit.desc }}</p>
     </ul>
   {% endfor %}
