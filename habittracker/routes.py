@@ -1,7 +1,7 @@
+from flask import flash, redirect, render_template, request, url_for
 from habittracker import app, db
 from habittracker.forms import HabitInputForm
 from habittracker.models import Habit
-from flask import flash, redirect, render_template, request, url_for
 
 
 @app.route("/test")
