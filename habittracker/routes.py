@@ -1,6 +1,6 @@
 from flask import flash, redirect, render_template, request, url_for
 from habittracker import app, db
-from habittracker.forms import HabitInputForm
+from habittracker.forms import HabitInputForm, RegistrationForm, LoginForm
 from habittracker.models import Habit
 
 
@@ -18,6 +18,29 @@ def home():
 def dashboard():
     habits = Habit.query.all()
     return render_template("dashboard.html", habits=habits, title="My Dashboard")
+
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f"Account created for {form.username.data}!", "success")
+        return redirect(url_for("dashboard"))
+    return render_template(
+        "register.html", title="Register", form=form, legend="Register"
+    )
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        if form.email.data == "admin@site.com" and form.password.data == "password":
+            flash("You have been logged in!", "success")
+            return redirect(url_for("dashboard"))
+        else:
+            flash("Login unsuccessful. Please check username and password", "danger")
+    return render_template("login.html", title="Login", form=form, legend="Login")
 
 
 @app.route("/habit/new", methods=["GET", "POST"])
